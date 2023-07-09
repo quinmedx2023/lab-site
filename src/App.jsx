@@ -1,15 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React from 'react';
+import {setup} from '@twind/core'
+import config from '../twind.config';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-function App() {
-  const [count, setCount] = useState(0)
+setup(config)
 
-  return (
-    <div className="App">
-      <h1>Hello lab site</h1>
-    </div>
-  )
+export const LabContext  = React.createContext({})
+
+function App() {    
+    return (
+        <div>
+            <LabContext.Provider value={{name: 'Biophotonics Imaging Technology Lab (BIT)'}}>
+                <Header />
+                <Footer />
+            </LabContext.Provider>
+        </div>
+    );
 }
 
-export default App
+export default App;
+
